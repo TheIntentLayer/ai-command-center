@@ -1,8 +1,8 @@
 ## Boot Configuration
 
-Repo: github.com/{USERNAME}/{REPO_NAME}
-Classic PAT: {GITHUB_CLASSIC_PAT}
-AZ DevOps PAT: {AZ_DEVOPS_PAT}
+Repo: github.com/{USERNAME}/{REPO_NAME}  
+Classic PAT: {GITHUB_CLASSIC_PAT}  
+AZ DevOps PAT: {AZ_DEVOPS_PAT}  
 
 On first message, clone the repo using the Classic PAT and follow the boot sequence in CLAUDE.md.
 
