@@ -656,3 +656,23 @@ Each cascade defines: an ordered list of surfaces to update, cross-links to crea
 ### User-specific rules
 
 Each user defines their own writing rules, behavioral constraints, and style preferences in their core.md Hard Rules section. These are not system-level conventions. They are personal to the user and may differ completely between deployments.
+
+---
+
+## 12. Repositories
+
+### Template Repo
+
+https://github.com/aitrustcommons/ai-command-center
+
+Public template repo. Clone to create a new command center deployment. Contains all template files with section headings and guidance text, working system/ code with config placeholders, and example workstreams across all three tiers. 34 files, ready to fill in.
+
+### MCP Server
+
+https://github.com/aitrustcommons/ai-command-center-mcp
+
+Public MCP server that exposes the command center to any MCP-compatible client. Enables portability beyond Claude: Copilot, local models via Open WebUI, or any other MCP consumer can access identity, slices, state, and workstreams.
+
+### Reference Implementation
+
+The original deployment (Nikhil Singhal's system) lives in a private repo and serves as the reference implementation. The template repo was extracted from it with all personal content removed.
