@@ -218,9 +218,10 @@ def create_work_item(title, description="", area=None, priority=3, tags="", due_
 
 
 def add_comment(work_item_id, text):
-    """Add a comment to a work item."""
+    """Add a comment to a work item. Converts newlines to HTML for rendering."""
+    html_text = text.replace("\n", "<br>\n")
     url = f"_apis/wit/workitems/{work_item_id}/comments?api-version=7.1-preview.4"
-    result = _api_post(url, {"text": text})
+    result = _api_post(url, {"text": html_text})
     return result.get("id")
 
 
