@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 450px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 13px;
+      color: #1f2937;
+      padding: 14px;
+      background: #fff;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .header img { width: 24px; height: 24px; border-radius: 4px; }
+    h1 { font-size: 15px; color: #4f46e5; font-weight: 700; }
+    .section { margin-bottom: 10px; }
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 4px;
+      font-size: 12px;
+      color: #374151;
+    }
+    select {
+      width: 100%;
+      padding: 6px 8px;
+      border: 1px solid #d1d5db;
+      border-radius: 4px;
+      font-size: 13px;
+      outline: none;
+    }
+    select:focus {
+      border-color: #4f46e5;
+      box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.15);
+    }
+    .btn {
+      width: 100%;
+      padding: 8px 0;
+      border: none;
+      border-radius: 5px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+      text-align: center;
+    }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn-primary { background: #4f46e5; color: #fff; }
+    .btn-primary:hover:not(:disabled) { background: #4338ca; }
+    .status {
+      font-size: 11px;
+      color: #6b7280;
+      margin-top: 6px;
+      min-height: 14px;
+    }
+    .status.running { color: #d97706; }
+    .status.success { color: #16a34a; }
+    .status.error { color: #dc2626; }
+    .synth-animation {
+      display: none;
+      text-align: center;
+      padding: 16px 0 8px;
+      position: relative;
+      overflow: hidden;
+    }
+    .synth-animation.active { display: block; }
+    .synth-stage {
+      position: relative;
+      height: 40px;
+      margin-bottom: 8px;
+    }
+    .synth-brain {
+      font-size: 28px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      animation: pulse 2s infinite;
+      z-index: 2;
+    }
+    .laser {
+      position: absolute;
+      top: 50%;
+      height: 3px;
+      border-radius: 2px;
+      animation: shoot 1.5s infinite;
+      z-index: 1;
+    }
+    .laser-left {
+      left: 0;
+      width: 40%;
+      background: linear-gradient(90deg, transparent, #ef4444, #f97316);
+      animation-delay: 0s;
+    }
+    .laser-right {
+      right: 0;
+      width: 40%;
+      background: linear-gradient(270deg, transparent, #22c55e, #06b6d4);
+      animation-delay: 0.75s;
+    }
+    @keyframes shoot {
+      0% { opacity: 0; transform: translateY(-50%) scaleX(0); }
+      30% { opacity: 1; transform: translateY(-50%) scaleX(0.5); }
+      60% { opacity: 1; transform: translateY(-50%) scaleX(1); }
+      80% { opacity: 0.5; }
+      100% { opacity: 0; transform: translateY(-50%) scaleX(0); }
+    }
+    @keyframes pulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); }
+      50% { transform: translate(-50%, -50%) scale(1.15); }
+    }
+    .spark {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      animation: sparkle 2s infinite;
+    }
+    .spark:nth-child(3) { left: 20%; top: 20%; background: #ef4444; animation-delay: 0.2s; }
+    .spark:nth-child(4) { left: 75%; top: 30%; background: #22c55e; animation-delay: 0.7s; }
+    .spark:nth-child(5) { left: 35%; top: 70%; background: #f97316; animation-delay: 1.1s; }
+    .spark:nth-child(6) { left: 80%; top: 65%; background: #06b6d4; animation-delay: 0.4s; }
+    .spark:nth-child(7) { left: 10%; top: 55%; background: #a855f7; animation-delay: 1.5s; }
+    .spark:nth-child(8) { left: 60%; top: 15%; background: #eab308; animation-delay: 0.9s; }
+    @keyframes sparkle {
+      0%, 100% { opacity: 0; transform: scale(0); }
+      50% { opacity: 1; transform: scale(2); }
+    }
+    .synth-quip {
+      font-style: italic;
+      font-size: 11px;
+      color: #1f2937;
+      min-height: 16px;
+    }
+    .keep-chat {
+      display: none;
+      margin: 8px 0;
+      padding: 6px 8px;
+      font-size: 12px;
+      color: #6b7280;
+      background: #f9fafb;
+      border-radius: 4px;
+      border: 1px solid #e5e7eb;
+    }
+    .keep-chat label {
+      display: inline;
+      font-weight: normal;
+      font-size: 12px;
+      color: #6b7280;
+      cursor: pointer;
+      margin-left: 4px;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #e5e7eb;
+      margin: 10px 0;
+    }
+    .log-header {
+      font-size: 11px;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 4px;
+    }
+    .log {
+      max-height: 150px;
+      overflow-y: auto;
+      font-size: 10px;
+      color: #6b7280;
+      background: #f9fafb;
+      border-radius: 4px;
+      padding: 5px 7px;
+    }
+    .log-entry { margin-bottom: 2px; }
+    .log-entry strong { color: #374151; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="icons/icon-48.png" alt="">
+    <h1>Synthesizer</h1>
+  </div>
+
+  <div class="section">
+    <label for="project">Claude Project</label>
+    <select id="project">
+      <option value="">Loading projects...</option>
+    </select>
+  </div>
+
+  <div class="section">
+    <label for="pipeline">Pipeline</label>
+    <select id="pipeline">
+      <option value="full">Full synthesis</option>
+      <option value="extract">All chats (no synthesis)</option>
+      <option value="extract:1">First chat only</option>
+      <option value="boot">Boot only</option>
+    </select>
+  </div>
+
+  <div class="keep-chat" id="keep-chat-row">
+    <input type="checkbox" id="keep-chat">
+    <label for="keep-chat">Keep temp chat after synthesis</label>
+  </div>
+
+  <button class="btn btn-primary" id="synthesize-btn" disabled>Synthesize</button>
+  <div class="synth-animation" id="synth-animation">
+    <div class="synth-stage">
+      <div class="laser laser-left"></div>
+      <div class="synth-brain">&#129504;</div>
+      <div class="laser laser-right"></div>
+      <div class="spark"></div>
+      <div class="spark"></div>
+      <div class="spark"></div>
+      <div class="spark"></div>
+      <div class="spark"></div>
+      <div class="spark"></div>
+    </div>
+    <div class="synth-quip" id="synth-quip"></div>
+  </div>
+  <div class="status" id="status"></div>
+
+  <hr>
+  <div style="display:flex;justify-content:space-between;align-items:center;">
+    <div class="log-header">Activity</div>
+    <span id="clear-log-btn" style="font-size:10px;color:#9ca3af;cursor:pointer;text-decoration:underline;">Clear</span>
+  </div>
+  <div class="log" id="activity-log">Loading...</div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

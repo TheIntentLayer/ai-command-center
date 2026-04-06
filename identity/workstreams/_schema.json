@@ -1,0 +1,14 @@
+{
+  "$comment": "Workstream registry schema. One file per workstream in identity/workstreams/.",
+  "name": "string, display name",
+  "tier": "1 = full workstream (slice + folder + AZ), 2 = tracked category (folder + AZ, no slice), 3 = idea (ideas/ folder only)",
+  "area_path": "string, AZ DevOps area path name",
+  "folder": "string or null, root-level folder name",
+  "slice": "string or null, path to slice.md relative to repo root",
+  "trigger_words": "array of strings or null, words that trigger this slice in CLAUDE.md boot",
+  "git_identity": "object with name and email, or null (defaults to slice's own config)",
+  "handled_by": "string or null, for tier 2: which slice handles this work",
+  "active": "boolean",
+  "created": "date string YYYY-MM-DD",
+  "description": "string, one-line description"
+}

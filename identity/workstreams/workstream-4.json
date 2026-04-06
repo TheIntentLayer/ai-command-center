@@ -1,0 +1,13 @@
+{
+  "name": "Workstream-4",
+  "tier": 3,
+  "area_path": null,
+  "folder": null,
+  "slice": null,
+  "trigger_words": null,
+  "git_identity": null,
+  "handled_by": null,
+  "active": false,
+  "created": "{DATE}",
+  "description": "Example Tier 3 idea. Not yet a workstream. Lives in ideas/ folder. Promote to Tier 2 when it accumulates gravity."
+}

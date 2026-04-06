@@ -1,0 +1,13 @@
+{
+  "name": "Workstream-2",
+  "tier": 2,
+  "area_path": "Workstream-2",
+  "folder": "workstream-2",
+  "slice": null,
+  "trigger_words": null,
+  "git_identity": null,
+  "handled_by": "ops",
+  "active": true,
+  "created": "{DATE}",
+  "description": "Example Tier 2 workstream under Ops. Replace with your actual tracked category (e.g., Career, LinkedIn, Personal)."
+}
