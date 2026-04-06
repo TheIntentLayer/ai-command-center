@@ -1,3 +1,5 @@
+> **Note:** This document reflects V4.3 architecture. V4.4 restructured the identity folder. See the V4.4 design doc for current architecture.
+
 # AI Command Center V4.3: Technical Specification
 
 **Purpose:** Complete technical specification of the AI Command Center system. Sufficient for: (1) building an MCP server that exposes this system, (2) scaffolding a new user's deployment from scratch, (3) understanding every component and how they connect.

@@ -1,0 +1,19 @@
+{
+  "$comment": "Tracking areas for work item routing. Each area maps to an AZ DevOps area path and is handled by a personality. The handled_by field is the single source of truth for which personality owns which tracking area.",
+  "areas": [
+    {
+      "name": "Workstream-2",
+      "area_path": "Workstream-2",
+      "folder": "workstream-2",
+      "handled_by": "ops",
+      "description": "Example tracking area under Ops. Replace with your actual tracked category (e.g., Career, LinkedIn, Personal)."
+    },
+    {
+      "name": "Workstream-3",
+      "area_path": "Workstream-1\\Workstream-3",
+      "folder": "workstream-1/workstream-3",
+      "handled_by": "workstream-1",
+      "description": "Example tracking area nested under Workstream-1. Shows nested area paths and folder mirroring."
+    }
+  ]
+}

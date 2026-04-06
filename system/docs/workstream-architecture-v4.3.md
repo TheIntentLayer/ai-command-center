@@ -1,3 +1,5 @@
+> **Note:** This document reflects V4.3 architecture. V4.4 eliminated the tier system and split workstreams into personalities + tracking areas.
+
 # Workstream Architecture Reference
 
 **Purpose:** Conceptual model for workstreams, tiers, slices, and how they relate. Read this before creating, promoting, or restructuring workstreams.

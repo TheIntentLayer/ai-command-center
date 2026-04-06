@@ -1,0 +1,10 @@
+{
+  "name": "Ops",
+  "description": "General operations, system management, and default personality. Handles all tracking areas that don't have their own personality.",
+  "area_path": "System",
+  "folder": null,
+  "trigger_words": ["ops", "system", "general", "infrastructure"],
+  "git_identity": { "name": "{GIT_NAME}", "email": "{GIT_EMAIL}" },
+  "active": true,
+  "created": "{DATE}"
+}

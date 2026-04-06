@@ -1,13 +1,10 @@
 {
   "name": "Workstream-1",
-  "tier": 1,
+  "description": "Example personality. Replace with your actual personality (e.g., Book, Consulting, Research).",
   "area_path": "Workstream-1",
   "folder": "workstream-1",
-  "slice": "identity/slices/workstream-1/slice.md",
   "trigger_words": ["workstream-1", "{ADD_YOUR_TRIGGER_WORDS}"],
   "git_identity": { "name": "{GIT_NAME}", "email": "{GIT_EMAIL}" },
-  "handled_by": null,
   "active": true,
-  "created": "{DATE}",
-  "description": "Example Tier 1 workstream. Replace with your actual workstream (e.g., Book, Consulting, Research)."
+  "created": "{DATE}"
 }

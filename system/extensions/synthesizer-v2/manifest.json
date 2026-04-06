@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Claude Synthesizer",
-  "description": "In-project STATE.md synthesis for Claude AI partnership projects",
+  "description": "In-project status.md synthesis for Claude AI partnership projects",
   "version": "2.5.1",
   "permissions": ["storage", "tabs"],
   "host_permissions": [

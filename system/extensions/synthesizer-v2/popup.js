@@ -82,7 +82,7 @@ const QUIPS = [
   'Tracking commits and connecting the dots...',
   'GitaVani and ClearNews on the same day... that compression curve',
   'Capturing what matters from every conversation',
-  'Mapping the V4.1 personality slice architecture...',
+  'Mapping the V4.4 personality architecture...',
   'Following the PATs from seed messages to project instructions...',
   'Tracing the synthesis pipeline from $1.57/run to $0...',
   'Documenting the journey from RAG to DOM export...',

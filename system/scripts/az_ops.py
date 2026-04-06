@@ -40,26 +40,41 @@ VALID_AREAS_FALLBACK = [
 
 
 def _load_valid_areas():
-    """Load valid area paths from identity/workstreams/*.json registry.
-    Falls back to hardcoded list if registry not found."""
+    """Load valid area paths from identity/personalities/*/personality.json
+    and identity/tracking/areas.json. Falls back to hardcoded list if
+    neither source is found."""
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    ws_dir = os.path.join(script_dir, "..", "..", "identity", "workstreams")
-    ws_dir = os.path.normpath(ws_dir)
-
-    if not os.path.isdir(ws_dir):
-        return list(VALID_AREAS_FALLBACK)
+    repo_root = os.path.normpath(os.path.join(script_dir, "..", ".."))
+    personalities_dir = os.path.join(repo_root, "identity", "personalities")
+    tracking_file = os.path.join(repo_root, "identity", "tracking", "areas.json")
 
     areas = set()
-    for f in os.listdir(ws_dir):
-        if f.endswith('.json') and not f.startswith('_'):
-            try:
-                with open(os.path.join(ws_dir, f)) as fh:
-                    data = json.load(fh)
-                    ap = data.get('area_path')
+
+    # Read from personality definitions
+    if os.path.isdir(personalities_dir):
+        for d in os.listdir(personalities_dir):
+            json_path = os.path.join(personalities_dir, d, "personality.json")
+            if os.path.isfile(json_path):
+                try:
+                    with open(json_path) as fh:
+                        data = json.load(fh)
+                        ap = data.get('area_path')
+                        if ap:
+                            areas.add(ap)
+                except (json.JSONDecodeError, KeyError):
+                    continue
+
+    # Read from tracking areas
+    if os.path.isfile(tracking_file):
+        try:
+            with open(tracking_file) as fh:
+                data = json.load(fh)
+                for entry in data.get('areas', []):
+                    ap = entry.get('area_path')
                     if ap:
                         areas.add(ap)
-            except (json.JSONDecodeError, KeyError):
-                continue
+        except (json.JSONDecodeError, KeyError):
+            pass
 
     return sorted(areas) if areas else list(VALID_AREAS_FALLBACK)
 
@@ -246,11 +261,11 @@ def create_cascade(cascade_type, title, area=None):
     Create a cascade work item by reading steps from CASCADE_CHECKLIST.md.
     Reads the relevant section and embeds steps as markdown checkboxes.
     """
-    # Find cascade-checklist.md (V4: identity/slices/ops/)
+    # Find cascade-checklist.md (V4.4: identity/personalities/ops/)
     script_dir = os.path.dirname(os.path.abspath(__file__))
     checklist_paths = [
-        os.path.join(script_dir, "..", "..", "identity", "slices", "ops", "cascade-checklist.md"),
-        os.path.join(os.getcwd(), "identity", "slices", "ops", "cascade-checklist.md"),
+        os.path.join(script_dir, "..", "..", "identity", "personalities", "ops", "cascade-checklist.md"),
+        os.path.join(os.getcwd(), "identity", "personalities", "ops", "cascade-checklist.md"),
         os.path.join(script_dir, "..", "context", "CASCADE_CHECKLIST.md"),
         os.path.join(os.getcwd(), "system", "context", "CASCADE_CHECKLIST.md"),
     ]

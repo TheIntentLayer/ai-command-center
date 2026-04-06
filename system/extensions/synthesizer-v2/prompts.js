@@ -2,11 +2,11 @@
 // Exposes window.SynthPrompts for use by orchestrator.js.
 // Loaded via manifest before orchestrator.js.
 //
-// The synthesis slice (identity/slices/synthesis/slice.md) carries the
+// The synthesis personality (identity/personalities/synthesis/behavior-rules-and-context.md) carries the
 // ground rules: timezone, judgment guidance, what to include vs not,
 // writing rules. These prompts carry the operational instructions that
 // need to be fresh in context when used: the 6-category extraction
-// framework (repeated per chat) and the STATE.md format (sent at end).
+// framework (repeated per chat) and the status.md format (sent at end).
 //
 // Placeholders filled at runtime by the orchestrator:
 //   {chat_name}   -- name of the chat being processed
@@ -39,10 +39,10 @@ Run these commands and note the output:
 
 1. git log --all --since='7 days ago' --format='%ai %an | %s' \
 --grep='Persist auto-backup' --grep='Synthesis step' \
---grep='STATE.md synthesized' --invert-grep
+--grep='status.md synthesized' --invert-grep
 2. python3 system/scripts/az_ops.py list
 3. python3 system/scripts/az_ops.py list --all
-4. Read identity/core.md for reference
+4. Read identity/identity-rules.md for reference
 
 Your final line MUST be exactly: SUPPLEMENTS COMPLETE`,
 
@@ -112,15 +112,15 @@ ANALYSIS COMPLETE: {chat_name}
     synthesis: `\
 All {chat_count} chats have been processed: {chat_list}.
 
-You have the supplementary data (git log, AZ DevOps board, core.md) \
+You have the supplementary data (git log, AZ DevOps board, identity-rules.md) \
 from earlier in this conversation. You have the chat analyses from \
 all {chat_count} transcripts. Now produce STATE.md.
 
-You are producing a STATE.md document -- the "State of the Union" for \
-this AI partnership project. This is not a summary. STATE.md tells a \
+You are producing a status.md document -- the "State of the Union" for \
+this AI partnership project. This is not a summary. status.md tells a \
 new partner where we are across everything, what we are thinking, what \
 matters right now, and what to do next. A brand-new AI instance with \
-zero memory of these conversations will rely on STATE.md to resume as \
+zero memory of these conversations will rely on status.md to resume as \
 a partner on the very first message.
 
 TIMEZONE: All dates and times in STATE.md must be in the user's \
@@ -134,13 +134,13 @@ timestamp, not by version number alone. Also detect predecessor \
 relationships by name similarity, not just version numbers.
 
 WHAT THE NEW CHAT WILL ALREADY HAVE: The new chat's boot sequence \
-(CLAUDE.md) will instruct it to read STATE.md, identity/core.md, \
-personality slice definitions, AZ DevOps work items, and git log. \
+(CLAUDE.md) will instruct it to read status.md, identity/identity-rules.md, \
+personality definitions, AZ DevOps work items, and git log. \
 DO NOT DUPLICATE information that already lives in those files. \
 Extract only what would be LOST if these conversations disappeared.
 
 Specifically:
-- Do NOT describe who the human is (core.md covers this)
+- Do NOT describe who the human is (identity-rules.md covers this)
 - Do NOT list all active issues (the board covers this)
 - DO capture decisions and new rules established during these sessions
 - DO capture in-flight work that issue titles alone cannot convey
@@ -159,13 +159,13 @@ changes are all signal.
 - Look for implicit commitments across chats. One chat may reference \
 work happening in another.
 
-Write STATE.md to identity/state/STATE.md using the structure below. \
+Write status.md to identity/state/status.md using the structure below. \
 Every section is required. If a section has no content, write \
 "None this session."
 
 Start with EXACTLY these lines:
 
-# STATE.md
+# Status
 
 ## Generated: {timestamp}
 ## Source: In-project synthesis (DOM export + git + board)
@@ -177,7 +177,7 @@ Start with EXACTLY these lines:
 
 ### Architecture
 Current system architecture. What version of the personality system \
-is active. How many slices. How the synthesis pipeline works. Keep \
+is active. How many personalities. How the synthesis pipeline works. Keep \
 this brief -- it changes rarely.
 
 ### Active Workstreams
@@ -239,7 +239,7 @@ words. Quality over compression.
 
 ## Commit Instructions
 
-Commit STATE.md with message: "STATE.md synthesized from DOM export + git + board"
+Commit status.md with message: "status.md synthesized from DOM export + git + board"
 
 After the commit succeeds, your FINAL line MUST be exactly:
 COMMIT SYNTHESIS: [hash]

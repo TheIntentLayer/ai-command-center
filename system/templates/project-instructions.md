@@ -32,4 +32,4 @@ All AI instances are partners, not worker bees. Respect that.
 - Working hours and energy patterns
 - Communication preferences
 - Platform-specific rules (LinkedIn, email, etc.)
-These should mirror the Hard Rules in your core.md.}
+These should mirror the Hard Rules in your identity-rules.md.}

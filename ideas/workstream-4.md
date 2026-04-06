@@ -1,7 +1,7 @@
 # Workstream-4: {Idea Name}
 
 **Captured:** {DATE}
-**Status:** Idea. Not yet a workstream.
+**Status:** Idea. Not yet tracked.
 
 ## The Idea
 
@@ -13,11 +13,11 @@
 
 ## When to Promote
 
-This becomes a Tier 2 workstream when:
+This becomes a tracking area when:
 - It has enough content to warrant a folder
 - It has work items that need tracking
 - It keeps coming up in conversations
 
-This becomes a Tier 1 workstream when:
+This becomes a personality when:
 - It needs its own thinking mode (different tone, different files, different rules)
 - It warrants its own chat sessions
