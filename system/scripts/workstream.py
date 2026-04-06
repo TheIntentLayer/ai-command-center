@@ -10,7 +10,7 @@ dynamically, this script only needs to create the 3 things that can't
 be dynamic: AZ DevOps area path, repo folder, and slice.md file.
 
 Usage:
-  python3 workstream.py create identity/workstreams/omnisynth.json
+  python3 workstream.py create identity/workstreams/workstream-1.json
   python3 workstream.py list
   python3 workstream.py sync-check
   python3 workstream.py deactivate identity/workstreams/workstream-1.json

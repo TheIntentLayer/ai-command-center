@@ -50,7 +50,7 @@ const QUIPS = [
   'Confirming figures are numbered by reading order...',
   'Making sure "one year" not "nine months"...',
   'Verifying nobody called it a "summary"...',
-  'Checking that Urmila is never characterized as QA...',
+  'Checking context quality across slices...',
   'Finding the part where Claude said "I was wrong"...',
   'Detecting the 4:30 AM start energy...',
   'Measuring the coffee-to-insight ratio...',

@@ -47,9 +47,9 @@ The boot sequence reads the first message, matches trigger words from all Tier 1
 Azure DevOps area paths for work item categorization. They can be nested using backslash notation:
 
 ```
-The Big Push\AI-Trust-Commons                 (parent)
-The Big Push\AI-Trust-Commons\TheIntentLayer  (child)
-The Big Push\AI-Trust-Commons\OmniSynth       (child)
+Your-Project\Workstream-1                     (parent)
+Your-Project\Workstream-1\Workstream-3       (child)
+Your-Project\Workstream-1\Sub-Project-B      (child)
 ```
 
 A Tier 1 workstream can have a parent area path, with its Tier 2 children nesting underneath. Work items at the parent level catch general work; children catch specific threads.
@@ -72,7 +72,7 @@ Ops (Tier 1, slice: ops/slice.md, area_path: System)
   ├── Career (Tier 2, handled_by: ops, area_path: Career)
   ├── Products (Tier 2, handled_by: ops, area_path: Products)
   ├── Personal (Tier 2, handled_by: ops, area_path: Personal)
-  └── OmSpark (Tier 2, handled_by: ops, area_path: OmSpark)
+  └── Personal (Tier 2, handled_by: ops, area_path: Personal)
 ```
 
 When you talk about LinkedIn in an Ops chat, the Ops slice is loaded. LinkedIn doesn't get its own boot personality. But LinkedIn work items have their own area path, and LinkedIn files have their own folder.
@@ -80,10 +80,9 @@ When you talk about LinkedIn in an Ops chat, the Ops slice is loaded. LinkedIn d
 **Example (AI Trust Commons):**
 
 ```
-AI-Trust-Commons (Tier 1, slice, area_path: AI-Trust-Commons)
-  ├── TheIntentLayer (Tier 2, handled_by: ai-trust-commons, area_path: AI-Trust-Commons\TheIntentLayer)
-  ├── OmniSynth (Tier 2, handled_by: ai-trust-commons, area_path: AI-Trust-Commons\OmniSynth)
-  └── (HIP Charter, NIST, NCCoE, Articles all at parent area path)
+Workstream-1 (Tier 1, slice, area_path: Workstream-1)
+  ├── Workstream-3 (Tier 2, handled_by: workstream-1, area_path: Workstream-1\Workstream-3)
+  └── (Other sub-projects at parent area path)
 ```
 
 ### Folder Mirrors Area Path
@@ -91,16 +90,14 @@ AI-Trust-Commons (Tier 1, slice, area_path: AI-Trust-Commons)
 The repo folder structure should mirror the area path hierarchy:
 
 ```
-ai-trust-commons/              -> AI-Trust-Commons
-  the-intent-layer/            -> AI-Trust-Commons\TheIntentLayer
-  omnisynth/                   -> AI-Trust-Commons\OmniSynth
-  hip-charter/                 -> AI-Trust-Commons (parent)
-  nist/                        -> AI-Trust-Commons (parent)
+workstream-1/                  -> Workstream-1
+  workstream-3/                -> Workstream-1\Workstream-3
+  sub-project-b/               -> Workstream-1 (parent catches these)
 ```
 
 ### When to Promote or Demote
 
-**Promote (Tier 2 -> Tier 1)** when a workstream needs its own thinking mode: distinct behavioral rules, different tone, different files at boot, enough volume that context loading matters. CueSpan needed this because consulting work requires a completely different posture than Ops.
+**Promote (Tier 2 -> Tier 1)** when a workstream needs its own thinking mode: distinct behavioral rules, different tone, different files at boot, enough volume that context loading matters. For example, consulting work might require a completely different posture than general operations.
 
 **Demote (Tier 1 -> Tier 2)** when separate slices cause fragmentation: the workstreams are really one body of work viewed from different angles, and separate chats develop tunnel vision.
 

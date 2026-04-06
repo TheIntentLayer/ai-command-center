@@ -310,7 +310,7 @@ def create_cascade(cascade_type, title, area=None):
     # Determine area from type if not specified
     if not area:
         area_map = {
-            "article": "AI-Trust-Commons",
+            "article": "System",
             "book": "Book",
             "linkedin": "LinkedIn",
             "narrative": "System",
@@ -318,7 +318,7 @@ def create_cascade(cascade_type, title, area=None):
             "workstream": "System",
             "session-close": "System",
             "resume": "Career",
-            "zenodo": "AI-Trust-Commons",
+            "zenodo": "System",
         }
         area = area_map.get(cascade_type.lower(), "System")
 

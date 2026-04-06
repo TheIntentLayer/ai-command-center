@@ -99,7 +99,7 @@ repo-root/
 
 ### Azure DevOps (required)
 
-Project board for work item tracking. One project per user (e.g., "The Big Push", "Urmila Command Center").
+Project board for work item tracking. One project per user (e.g., "My Command Center", "SS 2026").
 
 - **Area paths** mirror workstreams. Can be nested (e.g., `ProjectName\ParentArea\ChildArea`).
 - **Work item types:** Tasks (default). Tagged with workstream name and optionally functional tags (e.g., `cascade`, `daily-log`).
@@ -314,8 +314,7 @@ Slice discovery is how any consumer (boot sequence, MCP server, or human) determ
 ```json
 [
   { "name": "Ops", "trigger_words": ["ops", "system", "infrastructure"], "slice": "identity/slices/ops/slice.md" },
-  { "name": "Book", "trigger_words": ["book", "chapter", "writing"], "slice": "identity/slices/book/slice.md" },
-  { "name": "CueSpan", "trigger_words": ["cuespan", "parkpro"], "slice": "identity/slices/cuespan/slice.md" }
+  { "name": "Workstream-1", "trigger_words": ["workstream-1", "writing", "research"], "slice": "identity/slices/workstream-1/slice.md" }
 ]
 ```
 
@@ -510,25 +509,23 @@ The registry is the single source of truth. CLAUDE.md, az_ops.py, and workstream
 
 The most important relationship in the system. One Tier 1 thinking mode handles multiple Tier 2 tracking categories.
 
-**Example (Ops handling five Tier 2s):**
+**Example (Ops handling Tier 2 workstreams):**
 
 ```
 Ops (Tier 1, slice: ops/slice.md, area_path: System)
-  |-- LinkedIn (Tier 2, handled_by: ops, area_path: LinkedIn)
+  |-- Workstream-2 (Tier 2, handled_by: ops, area_path: Workstream-2)
   |-- Career (Tier 2, handled_by: ops, area_path: Career)
-  |-- Products (Tier 2, handled_by: ops, area_path: Products)
-  |-- Personal (Tier 2, handled_by: ops, area_path: Personal)
-  +-- OmSpark (Tier 2, handled_by: ops, area_path: OmSpark)
+  +-- Personal (Tier 2, handled_by: ops, area_path: Personal)
 ```
 
-When you talk about LinkedIn in an Ops chat, the Ops slice is loaded. LinkedIn doesn't get its own boot personality. But LinkedIn work items have their own area path, and LinkedIn files have their own folder.
+When you talk about Career in an Ops chat, the Ops slice is loaded. Career doesn't get its own boot personality. But Career work items have their own area path, and Career files have their own folder.
 
 **Example (nested area paths):**
 
 ```
-AI-Trust-Commons (Tier 1, slice, area_path: AI-Trust-Commons)
-  |-- TheIntentLayer (Tier 2, handled_by: ai-trust-commons, area_path: AI-Trust-Commons\TheIntentLayer)
-  +-- OmniSynth (Tier 2, handled_by: ai-trust-commons, area_path: AI-Trust-Commons\OmniSynth)
+Workstream-1 (Tier 1, slice, area_path: Workstream-1)
+  |-- Workstream-3 (Tier 2, handled_by: workstream-1, area_path: Workstream-1\Workstream-3)
+  +-- Sub-Project-B (Tier 2, handled_by: workstream-1, area_path: Workstream-1\Sub-Project-B)
 ```
 
 ### Folder Mirrors Area Path
@@ -536,11 +533,10 @@ AI-Trust-Commons (Tier 1, slice, area_path: AI-Trust-Commons)
 The repo folder structure should mirror the area path hierarchy:
 
 ```
-ai-trust-commons/              -> AI-Trust-Commons
-  the-intent-layer/            -> AI-Trust-Commons\TheIntentLayer
-  omnisynth/                   -> AI-Trust-Commons\OmniSynth
-  hip-charter/                 -> AI-Trust-Commons (parent catches these)
-  nist/                        -> AI-Trust-Commons (parent catches these)
+workstream-1/                  -> Workstream-1
+  sub-project-a/               -> Workstream-1\Sub-Project-A
+  sub-project-b/               -> Workstream-1\Sub-Project-B
+  general-docs/                -> Workstream-1 (parent catches these)
 ```
 
 ### What Reads the Registry
@@ -640,8 +636,8 @@ Each cascade defines: an ordered list of surfaces to update, cross-links to crea
 
 ### Naming
 
-- Workstream JSON filename: lowercase, hyphenated (e.g., `ai-trust-commons.json`)
-- Slice directory: matches JSON filename (e.g., `identity/slices/ai-trust-commons/`)
+- Workstream JSON filename: lowercase, hyphenated (e.g., `workstream-1.json`)
+- Slice directory: matches JSON filename (e.g., `identity/slices/workstream-1/`)
 - `handled_by` value: JSON filename without `.json`, lowercase
 - Git identities: `Claude-{Role}` / `claude-{role}@{user-domain}`
 

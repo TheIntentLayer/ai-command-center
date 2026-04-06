@@ -15,8 +15,8 @@ Dependencies (install once):
     python3 -m playwright install chromium
 
 Examples:
-    python3 system/scripts/md_to_pdf.py ai-trust-commons/omnisynth/omnisynth.md
-    python3 system/scripts/md_to_pdf.py ai-trust-commons/the-intent-layer/overview-v1.md
+    python3 system/scripts/md_to_pdf.py workstream-1/document.md
+    python3 system/scripts/md_to_pdf.py workstream-1/report.md workstream-1/report.pdf
 """
 
 import re
