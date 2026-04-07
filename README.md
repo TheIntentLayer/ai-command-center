@@ -79,7 +79,7 @@ Replace these with your actual personalities and tracking areas as you set up yo
 
 ## MCP Server
 
-An MCP server that exposes this system to any MCP-compatible client is at [ai-command-center-mcp](https://github.com/aitrustcommons/ai-command-center-mcp).
+An MCP server that exposes this system to any MCP-compatible client is at [ai-command-center-mcp](https://github.com/TheIntentLayer/ai-command-center-mcp).
 
 ## License
 

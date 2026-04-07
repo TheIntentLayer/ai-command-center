@@ -661,13 +661,13 @@ Each user defines their own writing rules, behavioral constraints, and style pre
 
 ### Template Repo
 
-https://github.com/aitrustcommons/ai-command-center
+https://github.com/TheIntentLayer/ai-command-center
 
 Public template repo. Clone to create a new command center deployment. Contains all template files with section headings and guidance text, working system/ code with config placeholders, and example workstreams across all three tiers. 34 files, ready to fill in.
 
 ### MCP Server
 
-https://github.com/aitrustcommons/ai-command-center-mcp
+https://github.com/TheIntentLayer/ai-command-center-mcp
 
 Public MCP server that exposes the command center to any MCP-compatible client. Enables portability beyond Claude: Copilot, local models via Open WebUI, or any other MCP consumer can access identity, slices, state, and workstreams.
 
