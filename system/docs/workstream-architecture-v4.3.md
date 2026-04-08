@@ -1,4 +1,4 @@
-> **Note:** This document reflects V4.3 architecture. V4.4 eliminated the tier system and split workstreams into personalities + tracking areas.
+> **Note:** This document reflects V4.3 architecture. Superseded by V4.4 (personalities + tracking areas) and V5.0 (boot.json, boot-sequence.md, behavior.md rename). See boot-sequence.md and identity/boot.json for current architecture.
 
 # Workstream Architecture Reference
 

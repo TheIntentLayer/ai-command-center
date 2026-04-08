@@ -5,6 +5,10 @@
   "folder": "workstream-1",
   "trigger_words": ["workstream-1", "{ADD_YOUR_TRIGGER_WORDS}"],
   "git_identity": { "name": "{GIT_NAME}", "email": "{GIT_EMAIL}" },
+  "boot_files": [],
+  "boot_directories": [],
+  "resources": {},
+  "wiki_pages": {},
   "active": true,
   "created": "{DATE}"
 }

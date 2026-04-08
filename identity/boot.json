@@ -1,0 +1,15 @@
+{
+  "version": "5.0",
+  "common_files": [
+    "identity/identity-rules.md",
+    "identity/state/status.md"
+  ],
+  "personality_directory": "identity/personalities",
+  "default_personality": "ops",
+  "git_log_depth": 20,
+  "work_items": {
+    "enabled": true,
+    "script": "system/scripts/az_ops.py",
+    "pat_file": "~/azure-dev-ops-claude-token.txt"
+  }
+}

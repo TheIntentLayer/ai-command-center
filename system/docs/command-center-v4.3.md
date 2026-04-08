@@ -1,4 +1,4 @@
-> **Note:** This document reflects V4.3 architecture. V4.4 restructured the identity folder. See the V4.4 design doc for current architecture.
+> **Note:** This document reflects V4.3 architecture. Superseded by V4.4 (identity folder restructure) and V5.0 (boot protocol decoupling, boot.json, behavior.md rename). See boot-sequence.md and identity/boot.json for current architecture.
 
 # AI Command Center V4.3: Technical Specification
 

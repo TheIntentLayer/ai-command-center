@@ -7,7 +7,7 @@ and provisions the infrastructure (AZ area path, folder, behavior file).
 
 Because CLAUDE.md, identity-rules.md, and az_ops.py now read from the registry
 dynamically, this script only needs to create the 3 things that can't
-be dynamic: AZ DevOps area path, repo folder, and behavior-rules-and-context.md file.
+be dynamic: AZ DevOps area path, repo folder, and behavior.md file.
 
 Usage:
   python3 personality.py create identity/personalities/omnisynth/personality.json
@@ -44,30 +44,9 @@ BEHAVIOR_TEMPLATE = '''# Personality: {name}
 
 ---
 
-## Purpose
-
-[To be filled through use. What this personality is about, what kind of thinking it requires.]
-
----
-
 ## Behavioral Rules (extends identity-rules.md)
 
 [To be filled through use. Mode-specific rules that don't apply to other personalities.]
-
----
-
-## Key Files
-
-- `{folder}/` (workstream content folder)
-
----
-
-## Git Configuration
-
-```
-git config user.name "{git_name}"
-git config user.email "{git_email}"
-```
 '''
 
 
@@ -182,9 +161,9 @@ def cmd_create(json_path):
         else:
             print(f"  Folder exists: {folder}/")
 
-    # 3. Create behavior-rules-and-context.md
+    # 3. Create behavior.md
     personality_dir = os.path.dirname(json_path)
-    behavior_path = os.path.join(personality_dir, "behavior-rules-and-context.md")
+    behavior_path = os.path.join(personality_dir, "behavior.md")
     if not os.path.exists(behavior_path):
         os.makedirs(personality_dir, exist_ok=True)
         triggers = ", ".join(p.get('trigger_words', []))
@@ -264,9 +243,9 @@ def cmd_sync_check():
 
         # Check behavior file exists
         if p_dir:
-            behavior_path = os.path.join(PERSONALITIES_DIR, p_dir, "behavior-rules-and-context.md")
+            behavior_path = os.path.join(PERSONALITIES_DIR, p_dir, "behavior.md")
             if not os.path.exists(behavior_path):
-                issues.append(f"  {name}: behavior file 'identity/personalities/{p_dir}/behavior-rules-and-context.md' missing")
+                issues.append(f"  {name}: behavior file 'identity/personalities/{p_dir}/behavior.md' missing")
 
     if issues:
         print("Sync issues found:")

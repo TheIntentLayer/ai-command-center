@@ -2,7 +2,7 @@
 // Exposes window.SynthPrompts for use by orchestrator.js.
 // Loaded via manifest before orchestrator.js.
 //
-// The synthesis personality (identity/personalities/synthesis/behavior-rules-and-context.md) carries the
+// The synthesis personality (identity/personalities/synthesis/behavior.md) carries the
 // ground rules: timezone, judgment guidance, what to include vs not,
 // writing rules. These prompts carry the operational instructions that
 // need to be fresh in context when used: the 6-category extraction
@@ -134,7 +134,7 @@ timestamp, not by version number alone. Also detect predecessor \
 relationships by name similarity, not just version numbers.
 
 WHAT THE NEW CHAT WILL ALREADY HAVE: The new chat's boot sequence \
-(CLAUDE.md) will instruct it to read status.md, identity/identity-rules.md, \
+(boot-sequence.md) will instruct it to read status.md, identity/identity-rules.md, \
 personality definitions, AZ DevOps work items, and git log. \
 DO NOT DUPLICATE information that already lives in those files. \
 Extract only what would be LOST if these conversations disappeared.

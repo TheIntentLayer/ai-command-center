@@ -27,7 +27,8 @@ You open a chat. Say one word. The AI boots as your partner.
 Read `system/docs/command-center-v4.3.md` for the V4.3 technical specification (historical reference).
 
 Short version:
-- `CLAUDE.md` is the boot protocol. Every chat reads it first.
+- `boot-sequence.md` is the universal boot protocol. Every AI reads it first (via `CLAUDE.md` wrapper).
+- `identity/boot.json` defines what files to load and where personalities live.
 - `identity/identity-rules.md` is who you are. Loaded every time.
 - `identity/personalities/` define your thinking modes. Different tone, different files, different rules per mode.
 - `identity/tracking/areas.json` tracks categories handled by existing personalities (no separate thinking mode needed).
@@ -37,17 +38,19 @@ Short version:
 ## Repo Structure
 
 ```
-CLAUDE.md                              Boot protocol
+boot-sequence.md                       Universal boot protocol
+CLAUDE.md                              1-liner wrapper (reads boot-sequence.md)
 identity/
+  boot.json                            Boot configuration (SST)
   identity-rules.md                    Who you are (fill this in)
   state/status.md                      Cross-session state (auto-generated)
   personalities/
     ops/
       personality.json                 Personality definition
-      behavior-rules-and-context.md    Behavioral rules and context loading
+      behavior.md                      Behavioral rules
     workstream-1/
       personality.json                 Personality definition
-      behavior-rules-and-context.md    Behavioral rules and context loading
+      behavior.md                      Behavioral rules
   tracking/
     areas.json                         Tracking areas (handled by personalities)
 system/
@@ -58,9 +61,28 @@ system/
   templates/                           Project instructions template
 ```
 
+## Personality JSON Fields
+
+Each personality is defined by a `personality.json` file:
+
+| Field | Description |
+|-------|-------------|
+| name | Display name |
+| description | One-line summary |
+| area_path | Azure DevOps area path for work items |
+| folder | Root-level content folder (null if none) |
+| trigger_words | Words that activate this personality during boot |
+| git_identity | Name and email for git commits |
+| boot_files | Files loaded at every boot for this personality |
+| boot_directories | Directories whose files are loaded at boot |
+| resources | Keyword-mapped on-demand reference paths (not loaded at boot) |
+| wiki_pages | Keyword-mapped wiki page names (not loaded at boot) |
+| active | Whether this personality is active |
+| created | Date created |
+
 ## Example Personalities and Tracking Areas
 
-This repo ships with examples showing the V4.4 structure:
+This repo ships with examples showing the V5.0 structure:
 
 **Personalities** (thinking modes with their own chat sessions):
 - `ops` -- default personality (your command center, handles everything that doesn't have its own mode)
@@ -73,7 +95,7 @@ This repo ships with examples showing the V4.4 structure:
 **Ideas** (just a file, no infrastructure):
 - `workstream-4` -- example idea in `ideas/`
 
-To promote an idea to a tracking area, add it to `identity/tracking/areas.json`. To promote a tracking area to a full personality, create a folder in `identity/personalities/` with `personality.json` and `behavior-rules-and-context.md`.
+To promote an idea to a tracking area, add it to `identity/tracking/areas.json`. To promote a tracking area to a full personality, create a folder in `identity/personalities/` with `personality.json` and `behavior.md`.
 
 Replace these with your actual personalities and tracking areas as you set up your system.
 
