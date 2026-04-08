@@ -21,7 +21,7 @@
 mkdir -p identity/personalities/{name}
 ```
 
-Use lowercase, hyphenated names: `ops`, `book`, `cuespan`, `ai-trust-commons`.
+Use lowercase, hyphenated names: `ops`, `book`, `consulting`, `research-lab`.
 
 ### 2. Create personality.json
 
@@ -66,7 +66,7 @@ Create `identity/personalities/{name}/personality.json` with this exact schema:
 | name | yes | Display name shown in boot verification |
 | description | yes | One-line summary of personality focus |
 | area_path | yes | AZ DevOps area path for work items. null if no tracking. |
-| folder | no | Root-level content folder (e.g., "book", "cuespan"). null if none. |
+| folder | no | Root-level content folder (e.g., "book", "consulting"). null if none. |
 | trigger_words | yes | Array of words/phrases that match this personality during boot. |
 | git_identity | yes | Name and email for git commits in this personality. |
 | boot_files | yes | Array of file paths loaded at every boot. Can be empty []. |
